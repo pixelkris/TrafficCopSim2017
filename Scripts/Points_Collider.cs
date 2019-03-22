@@ -4,24 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Points_Collider : MonoBehaviour {
-    public int score;
+
+
+    public static int score = 0;
     public Text scoreText;
 
 	void Start ()
     {
-        score = 0;
         getScoreText();
 	}
 	
 	void Update ()
     {
-		
+	
 	}
 
-    void OnTriggerEnter(Collider2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("")) {
-            score += 1;
+        if (coll.name == "temp_car(Clone)") {
+            score++;
             getScoreText();
             coll.gameObject.SetActive(false);
             Destroy(coll.gameObject);
